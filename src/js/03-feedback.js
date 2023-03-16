@@ -24,15 +24,26 @@ function onFormSumbit(e) {
 }
 
 function savedStorageData() {
-  const getStorageData = localStorage.getItem(STORAGE_KEY)
+  const getStorageData = JSON.parse(localStorage.getItem(STORAGE_KEY))
+  // console.log(getStorageData);
+  // console.log(JSON.parse(getStorageData));
   
   if (getStorageData) {
-    if (formInputEl.value) {
-      JSON.parse(getStorageData).email
-    }
-    if (formMessageEl.value) {
-      JSON.parse(getStorageData).message
-    }
+    console.log(getStorageData);
+    
+      if (getStorageData.email) {
+        formInputEl.value = getStorageData.email
+      }
+      if (getStorageData.message) {
+        formMessageEl.value = getStorageData.message
+      }
+
+    // if (formInputEl.value) {
+    //   getStorageData.email = formInputEl.value
+    // }
+    // if (formMessageEl.value) {
+    //   getStorageData.message
+    // }
   }
 }
 
