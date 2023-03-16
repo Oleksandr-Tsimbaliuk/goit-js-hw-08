@@ -9,28 +9,39 @@ const STORAGE_KEY = "feedback-form-state"
 formEl.addEventListener('input', throttle(onFormData, 500));
 formEl.addEventListener("submit", onFormSumbit)
 
-// savedStorageData()
+savedStorageData()
 
 function onFormData(e) {
+  formData[e.target.name] = e.target.value;
   const storageFormData = JSON.stringify(formData);
   localStorage.setItem(STORAGE_KEY, storageFormData)
-  formData[e.target.name] = e.target.value;
 }
 
 function onFormSumbit(e) {
   e.preventDefault();
   localStorage.removeItem(STORAGE_KEY)
-  console.log(formData);
   e.target.reset()
 }
 
-// function savedStorageData() {
-//   const savedMessage = localStorage.getItem(STORAGE_KEY)
-//   if (savedMessage) {
-//     formInputEl.value !== undefined ? JSON.parse(savedMessage).email : '';
-//     formMessageEl.value == undefined ? JSON.parse(savedMessage).message : '';
-//   }
-// }
+function savedStorageData() {
+  const getStorageData = localStorage.getItem(STORAGE_KEY)
+  
+  if (getStorageData) {
+    if (formInputEl.value) {
+      JSON.parse(getStorageData).email
+    }
+    if (formMessageEl.value) {
+      JSON.parse(getStorageData).message
+    }
+  }
+}
+
+
+
+
+
+
+
 
 
 

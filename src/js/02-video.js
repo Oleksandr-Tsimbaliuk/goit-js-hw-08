@@ -11,12 +11,12 @@ onPageLoad()
 player.on("timeupdate", throttle(onVideoPlayer, 1000))
 
 function onVideoPlayer(data) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data.seconds))
+    localStorage.setItem(STORAGE_KEY, data.seconds)
 }
 
 function onPageLoad() {
     if (saveCurrentTime) {
-        player.setCurrentTime(JSON.parse(saveCurrentTime)) 
+        player.setCurrentTime(saveCurrentTime) 
     }
 }
 
