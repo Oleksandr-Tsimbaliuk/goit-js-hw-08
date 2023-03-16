@@ -7,7 +7,7 @@ function createGalleryItemsMarkup (galleryItems) {
     return galleryItems.map((item) => {
         const {preview, original, description} = item
         return `
-        <li class="gallery__item">
+        <div class="gallery__item">
             <a class="gallery__link" href="${original}">
             <img
                 class="gallery__image"
@@ -15,7 +15,7 @@ function createGalleryItemsMarkup (galleryItems) {
                 data-source="${original}"
                 alt="${description}" />
             </a>
-        </li>`
+        </div>`
         }).join(" ")
 }
 const galleryContainer = document.querySelector('.gallery')
